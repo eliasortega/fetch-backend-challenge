@@ -15,7 +15,8 @@ var pointsMap = make(map[string]int)
 func getPointsByReceiptId(c *gin.Context) {
 	id := c.Param("id")
 	if points, ok := pointsMap[id]; ok {
-		c.JSON(http.StatusOK, points)
+		pointsObject := PointsObject{points}
+		c.JSON(http.StatusOK, pointsObject)
 	} else {
 		c.JSON(http.StatusNotFound, gin.H{"description": "No receipt found for that ID."})
 	}
