@@ -63,7 +63,10 @@ func TestPostReceiptInvalidRetailer(t *testing.T) {
 	payload["retailer"] = "+"
 	jsonPayload, _ := json.Marshal(payload)
 	url := "http://localhost:8080/receipts/process"
-	resp, _ := http.Post(url, "application/json", bytes.NewBuffer(jsonPayload))
+	resp, err := http.Post(url, "application/json", bytes.NewBuffer(jsonPayload))
+	if err != nil {
+		t.Fatal()
+	}
 	defer resp.Body.Close()
 	// verify 400 status code
 	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
@@ -74,7 +77,10 @@ func TestPostReceiptInvalidPurchaseDate(t *testing.T) {
 	payload["purchaseDate"] = "123"
 	jsonPayload, _ := json.Marshal(payload)
 	url := "http://localhost:8080/receipts/process"
-	resp, _ := http.Post(url, "application/json", bytes.NewBuffer(jsonPayload))
+	resp, err := http.Post(url, "application/json", bytes.NewBuffer(jsonPayload))
+	if err != nil {
+		t.Fatal()
+	}
 	defer resp.Body.Close()
 	// verify 400 status code
 	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
@@ -85,7 +91,10 @@ func TestPostReceiptInvalidPurchaseTime(t *testing.T) {
 	payload["purchaseTime"] = "123"
 	jsonPayload, _ := json.Marshal(payload)
 	url := "http://localhost:8080/receipts/process"
-	resp, _ := http.Post(url, "application/json", bytes.NewBuffer(jsonPayload))
+	resp, err := http.Post(url, "application/json", bytes.NewBuffer(jsonPayload))
+	if err != nil {
+		t.Fatal()
+	}
 	defer resp.Body.Close()
 	// verify 400 status code
 	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
@@ -96,7 +105,10 @@ func TestPostReceiptEmptyItems(t *testing.T) {
 	payload["items"] = []map[string]string{}
 	jsonPayload, _ := json.Marshal(payload)
 	url := "http://localhost:8080/receipts/process"
-	resp, _ := http.Post(url, "application/json", bytes.NewBuffer(jsonPayload))
+	resp, err := http.Post(url, "application/json", bytes.NewBuffer(jsonPayload))
+	if err != nil {
+		t.Fatal()
+	}
 	defer resp.Body.Close()
 	// verify 400 status code
 	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
@@ -112,7 +124,10 @@ func TestPostReceiptInvalidItems(t *testing.T) {
 	}
 	jsonPayload, _ := json.Marshal(payload)
 	url := "http://localhost:8080/receipts/process"
-	resp, _ := http.Post(url, "application/json", bytes.NewBuffer(jsonPayload))
+	resp, err := http.Post(url, "application/json", bytes.NewBuffer(jsonPayload))
+	if err != nil {
+		t.Fatal()
+	}
 	defer resp.Body.Close()
 	// verify 400 status code
 	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
@@ -123,7 +138,10 @@ func TestPostReceiptInvalidTotal(t *testing.T) {
 	payload["total"] = "-123.45"
 	jsonPayload, _ := json.Marshal(payload)
 	url := "http://localhost:8080/receipts/process"
-	resp, _ := http.Post(url, "application/json", bytes.NewBuffer(jsonPayload))
+	resp, err := http.Post(url, "application/json", bytes.NewBuffer(jsonPayload))
+	if err != nil {
+		t.Fatal()
+	}
 	defer resp.Body.Close()
 	// verify 400 status code
 	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
