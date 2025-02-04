@@ -10,4 +10,8 @@ Contains a webservice with 2 API endpoints, `POST /receipts/process` and `GET /r
 
 The service will then be live! The above endpoints can be accessed via base url `localhost:8080`.
 
+## Testing:
+1. With the webservice running, run `go test`.
+
+
 Thank you for your time!
