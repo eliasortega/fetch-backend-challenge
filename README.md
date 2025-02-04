@@ -8,6 +8,6 @@ Contains a webservice with 2 API endpoints, `POST /receipts/process` and `GET /r
 3. run `cd fetch-backend-challenge && go get .`
 4. run `go run .`
 
-The service will then be live! The above endpoints can be accessed via base url localhost:8080.
+The service will then be live! The above endpoints can be accessed via base url `localhost:8080`.
 
 Thank you for your time!
